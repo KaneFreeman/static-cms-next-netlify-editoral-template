@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:staging": "cross-env SHOW_DRAFT=true next build",
     "start": "next start",
     "export": "next build && next export -o ./dist",
     "test": "jest"
@@ -37,6 +38,7 @@
     "@types/js-yaml": "4.0.5",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
+    "cross-env": "7.0.3",
     "eslint-config-next": "13.1.5",
     "jest": "29.4.0",
     "js-yaml-loader": "1.2.2",
