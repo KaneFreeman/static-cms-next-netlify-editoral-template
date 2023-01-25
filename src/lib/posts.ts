@@ -8,6 +8,7 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 export type PostContent = {
   readonly date: string;
   readonly title: string;
+  readonly draft?: boolean;
   readonly slug: string;
   readonly tags?: string[];
   readonly fullPath: string;
@@ -35,12 +36,7 @@ export function fetchPostContent(): PostContent[] {
           yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
         },
       });
-      const matterData = matterResult.data as {
-        date: string;
-        title: string;
-        draft: boolean;
-        tags: string[];
-        slug: string;
+      const matterData = matterResult.data as PostContent & {
         fullPath: string;
       };
       matterData.fullPath = fullPath;
@@ -54,7 +50,7 @@ export function fetchPostContent(): PostContent[] {
 
       return matterData;
     })
-    .filter((data) => process.env["SHOW_DRAFT"] === 'true' || !data.draft);
+    .filter((data) => process.env["SHOW_DRAFT"] === "true" || !data.draft);
 
   // Sort posts by date
   postCache = allPostsData.sort((a, b) => {

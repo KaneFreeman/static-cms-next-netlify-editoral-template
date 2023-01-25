@@ -87,17 +87,17 @@ const config: Config = {
       create: true,
       slug: "{{slug}}",
       identifier_field: "slug",
-      summary: "{{title}}, Draft: {{draft}}",
+      summary: "{{title}}",
       view_filters: [
         {
           label: "Published",
           field: "draft",
-          pattern: false,
+          pattern: "false",
         },
         {
           label: "Drafts",
           field: "draft",
-          pattern: true,
+          pattern: "true",
         },
       ],
       fields: [
