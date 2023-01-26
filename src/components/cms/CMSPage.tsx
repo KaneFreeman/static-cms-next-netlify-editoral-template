@@ -3,8 +3,9 @@ import { useEffect } from "react";
 
 import config from "./config";
 
-import type { TemplatePreviewProps } from "@staticcms/core";
+import type { TemplatePreviewProps } from "@staticcms/core/dist/src/index";
 import type { FC } from "react";
+import PostPreviewCard from "./PostPreviewCard";
 
 interface PostData {
   title: string;
@@ -29,6 +30,7 @@ const CMSPage = () => {
     }
 
     CMS.registerPreviewTemplate("posts", PostPreview);
+    CMS.registerPreviewCard("posts", PostPreviewCard);
 
     CMS.registerAdditionalLink({
       id: "external-link",

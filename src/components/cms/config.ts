@@ -88,9 +88,22 @@ const config: Config = {
       slug: "{{slug}}",
       identifier_field: "slug",
       summary: "{{title}}",
+      view_filters: [
+        {
+          label: "Published",
+          field: "draft",
+          pattern: "false",
+        },
+        {
+          label: "Drafts",
+          field: "draft",
+          pattern: "true",
+        },
+      ],
       fields: [
         { label: "Slug", name: "slug", widget: "string" },
         { label: "Title", name: "title", widget: "string" },
+        { label: "Draft", name: "draft", widget: "boolean", default: true },
         {
           label: "Publish Date",
           name: "date",

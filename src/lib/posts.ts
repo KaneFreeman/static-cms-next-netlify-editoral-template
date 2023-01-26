@@ -8,6 +8,7 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 export type PostContent = {
   readonly date: string;
   readonly title: string;
+  readonly draft?: boolean;
   readonly slug: string;
   readonly tags?: string[];
   readonly fullPath: string;
@@ -19,6 +20,7 @@ export function fetchPostContent(): PostContent[] {
   if (postCache) {
     return postCache;
   }
+
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames
@@ -34,12 +36,8 @@ export function fetchPostContent(): PostContent[] {
           yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
         },
       });
-      const matterData = matterResult.data as {
-        date: string;
-        title: string;
-        tags: string[];
-        slug: string;
-        fullPath: string,
+      const matterData = matterResult.data as PostContent & {
+        fullPath: string;
       };
       matterData.fullPath = fullPath;
 
@@ -47,13 +45,13 @@ export function fetchPostContent(): PostContent[] {
 
       // Validate slug string
       if (matterData.slug !== slug) {
-        throw new Error(
-          "slug field not match with the path of its content source"
-        );
+        throw new Error("slug field not match with the path of its content source");
       }
 
       return matterData;
-    });
+    })
+    .filter((data) => process.env["SHOW_DRAFT"] === "true" || !data.draft);
+
   // Sort posts by date
   postCache = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
@@ -66,16 +64,10 @@ export function fetchPostContent(): PostContent[] {
 }
 
 export function countPosts(tag?: string): number {
-  return fetchPostContent().filter(
-    (it) => !tag || (it.tags && it.tags.includes(tag))
-  ).length;
+  return fetchPostContent().filter((it) => !tag || (it.tags && it.tags.includes(tag))).length;
 }
 
-export function listPostContent(
-  page: number,
-  limit: number,
-  tag?: string
-): PostContent[] {
+export function listPostContent(page: number, limit: number, tag?: string): PostContent[] {
   return fetchPostContent()
     .filter((it) => !tag || (it.tags && it.tags.includes(tag)))
     .slice((page - 1) * limit, page * limit);
