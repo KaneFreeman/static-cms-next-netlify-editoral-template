@@ -20,7 +20,7 @@ Or access the following demo sites:
 - [Production](https://next-editorial.staticcms.org/)
 - [Staging](https://next-editorial-staging.staticcms.org/)
 
-## Editorial Forkflow Setup
+## Editorial Workflow Setup
 
 There are two build commands `yarn build` (or `npm run build`) and `yarn build:staging` (or `npm run build:staging`).
 
