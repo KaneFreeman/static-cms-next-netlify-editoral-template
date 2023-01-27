@@ -1,6 +1,6 @@
 ![Next.js blogging template for Static CMS on Netlify](https://user-images.githubusercontent.com/1388138/197867836-58de8783-9712-4196-937f-4101b1327612.png)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c6f44d34-0570-4ca0-9d3d-cabdaa2b3afb/deploy-status)](https://app.netlify.com/sites/nextjs-netlify-blog-template/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/94f05f8f-379a-4dd5-885f-ac2a0cb8a012/deploy-status)](https://app.netlify.com/sites/static-cms-next-editorial/deploys)
 [![MADE BY Next.js](https://img.shields.io/badge/MADE%20BY%20Next.js-000000.svg?style=flat&logo=Next.js&labelColor=000)](https://nextjs.org/)
 
 Next.js blogging template for Netlify is a boilerplate for building blogs with only Netlify stacks.
@@ -13,11 +13,24 @@ Next.js blogging template for Netlify has already implemented these standard fea
 
 Deploy on your environment by clicking here:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/StaticJsCMS/static-cms-nextjs-netlify-blog-template&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/StaticJsCMS/static-cms-next-netlify-editoral-template&stack=cms)
 
-Or access the following demo site:
+Or access the following demo sites:
 
-[Next.js blog template for Netlify](https://static-cms-nextjs-netlify-blog-templa.netlify.app/)
+- [Production](https://next-editorial.staticcms.org/)
+- [Staging](https://next-editorial-staging.staticcms.org/)
+
+## Editorial Forkflow Setup
+
+There are two build commands `yarn build` (or `npm run build`) and `yarn build:staging` (or `npm run build:staging`).
+
+- `build` - Builds the production version of the site. Posts marked as `draft` are excluded from the build.
+- `build:staging` - Builds the staging version of the site. All posts are included in the build, regardless of `draft` status.
+
+### Setup
+
+1. Create a deployment that uses the `build` command. This is your production site.
+2. Create a deployment that uses the `build:staging` command. This is your staging site to view draft changes.
 
 ## Features
 
@@ -41,7 +54,7 @@ To create your blog using the template, open your terminal, `cd` into the direct
 and run the following command:
 
 ```
-npx create-next-app your-blog --example "https://github.com/StaticJsCMS/static-cms-nextjs-netlify-blog-template"
+npx create-next-app your-blog --example "https://github.com/StaticJsCMS/static-cms-next-netlify-editoral-template"
 ```
 
 After that, set up your project as following the Netlify blog:
