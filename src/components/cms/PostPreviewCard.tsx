@@ -1,7 +1,8 @@
-import type { TemplatePreviewCardProps } from "@staticcms/core";
+import type { TemplatePreviewCardProps, FieldPreviewProps, DateTimeField, BooleanField } from "@staticcms/core";
 import type { PostContent } from "../../lib/posts";
+import type { FC } from "react";
 
-const PostPreviewCard = ({ entry, viewStyle }: TemplatePreviewCardProps<PostContent>) => {
+const PostPreviewCard: FC<TemplatePreviewCardProps<PostContent>> = ({ entry, theme }) => {
   return (
     <div style={{ display: "flex", width: "100%", height: "100%" }}>
       <div style={{ padding: "16px", width: "100%" }}>
@@ -11,12 +12,13 @@ const PostPreviewCard = ({ entry, viewStyle }: TemplatePreviewCardProps<PostCont
             width: "100%",
             justifyContent: "space-between",
             alignItems: "start",
+            color: theme === "dark" ? "white" : "inherit",
           }}
         >
           <div
             style={{
               display: "flex",
-              flexDirection: viewStyle === "grid" ? "column" : "row",
+              flexDirection: "column",
               alignItems: "baseline",
               gap: "8px",
             }}

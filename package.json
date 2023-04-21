@@ -17,10 +17,11 @@
     "build:staging": "cross-env SHOW_DRAFT=true next build",
     "start": "next start",
     "export": "next build && next export -o ./dist",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --watch"
   },
   "dependencies": {
-    "@staticcms/core": "2.0.0",
+    "@staticcms/core": "2.0.1",
     "date-fns": "2.29.3",
     "gray-matter": "4.0.3",
     "js-yaml": "4.1.0",

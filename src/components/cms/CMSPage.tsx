@@ -1,28 +1,12 @@
 import CMS from "@staticcms/core";
-import { useEffect } from "react";
 import '@staticcms/core/dist/main.css';
+import { useEffect } from "react";
 
-import config from "./config";
-
-import type { TemplatePreviewProps } from "@staticcms/core/dist/src/index";
-import type { FC } from "react";
+import PostDateFieldPreview from "./PostDateFieldPreview";
+import PostDraftFieldPreview from "./PostDraftFieldPreview";
+import PostPreview from "./PostPreview";
 import PostPreviewCard from "./PostPreviewCard";
-
-interface PostData {
-  title: string;
-  date: string;
-  body: string;
-}
-
-const PostPreview: FC<TemplatePreviewProps<PostData>> = ({ entry, widgetFor }) => {
-  return (
-    <div className="content">
-      <h1>{entry.data.title}</h1>
-      <time>{entry.data.date}</time>
-      <div>{widgetFor("body")}</div>
-    </div>
-  );
-};
+import config from "./config";
 
 const CMSPage = () => {
   useEffect(() => {
@@ -32,6 +16,8 @@ const CMSPage = () => {
 
     CMS.registerPreviewTemplate("posts", PostPreview);
     CMS.registerPreviewCard("posts", PostPreviewCard);
+    CMS.registerFieldPreview('posts', 'date', PostDateFieldPreview);
+    CMS.registerFieldPreview('posts', 'draft', PostDraftFieldPreview);
 
     CMS.registerAdditionalLink({
       id: "external-link",
