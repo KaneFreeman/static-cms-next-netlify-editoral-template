@@ -2786,10 +2786,10 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@staticcms/core@2.4.4":
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/@staticcms/core/-/core-2.4.4.tgz#1bd6a61f7b769e74925e02c9899e007262a2655d"
-  integrity sha512-Wd3baxapfs2M8g8TrurAEQ/MsEqUfGUNVT1obv9+vzR/539HKytQGoXgbxITUudSNbdBtYryw0NJn9Ouwptk+Q==
+"@staticcms/core@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@staticcms/core/-/core-2.5.1.tgz#546330e85c43c820c0ed112e66505237d42a346b"
+  integrity sha512-oSfbUYwdDv4tfQ/c1xA7+KI1y0Hwx2wr8EhjsfAjBl+kDIeoQTh8KBo/VOtcW//1m0XDZh6XXK+4iVXVu38WpA==
   dependencies:
     "@babel/eslint-parser" "7.21.3"
     "@babel/runtime" "7.21.0"
